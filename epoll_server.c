@@ -64,11 +64,11 @@ void * accept_client(void * context) {
 	}
 }
 
-int main() {
+int main(int argc, char ** argv) {
 	struct sockaddr_in server_address;
 	server_address.sin_port = ntohs(12345);
 	server_address.sin_family = AF_INET;
-	inet_aton("127.0.0.1", &server_address.sin_addr);
+	inet_aton(argv[1], &server_address.sin_addr);
 
 	int server_fd = socket(AF_INET, SOCK_STREAM, 0);
 	assert(server_fd >= 0);
